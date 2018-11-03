@@ -7,8 +7,10 @@ dotenv.config();
 
 console.log("-----------------------------------------------");
 
+const DB = process.env.DB || "";
+
 mongoose
-  .connect(process.env.DB) //look up what will change in next version
+  .connect(DB) //look up what will change in next version
   .then(() => console.log("connected to db..."))
   .catch(er => console.error("Couldn't connecte to db", er));
 
