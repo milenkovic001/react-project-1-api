@@ -1,13 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
 console.log("-----------------------------------------------");
 
 mongoose
-  .connect("mongodb://localhost/brzoCitanje") //look up what will change in next version
+  .connect(process.env.DB) //look up what will change in next version
   .then(() => console.log("connected to db..."))
   .catch(er => console.error("Couldn't connecte to db", er));
 
