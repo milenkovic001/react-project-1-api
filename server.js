@@ -1,16 +1,13 @@
+const config = require("config");
 const express = require("express");
 const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
 
 console.log("-----------------------------------------------");
 
-const db = process.env.DB;
-
 mongoose
-  .connect(db) //look up what will change in next version
+  .connect(config.get("db_connection")) //look up what will change in next version
   .then(() => console.log("connected to db..."))
   .catch(er => console.error("Couldn't connecte to db", er));
 
